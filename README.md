@@ -1,21 +1,20 @@
 # ohmyzsh-google-cloudshell
 
-1. Install zsh, change default shell for current user, and download ohmyzsh every time the cloudshell instance boots
+1. Install zsh every time the cloudshell instance boots
 ```
 touch $HOME/.customize_environment
 cat << EOF >> $HOME/.customize_environment
 # install zsh
 sudo apt-get -yq install zsh
-sudo chsh -s /bin/zsh $USER
-git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git /tmp/ohmyzsh
 EOF
 ```
 2. On the cloudshell page, click on the three dots in the upper right-hand corner, click **Restart**, select **Want clean VM state**, and click **Restart**
 3. Install ohmyzsh
 ```
-cat << EOF >> $HOME/.zshrc
-# install ohmyzsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+cat << EOF >> $HOME/.profile
+# set default shell to zsh and install ohmyzsh
+sudo chsh -s /bin/zsh $USER
+sh -c "\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 EOF
 ```
 4. Setup environment variables
