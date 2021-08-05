@@ -5,8 +5,8 @@
 cat << EOF >> $HOME/.bashrc
 
 # install zsh if its not installed
-command -v "zsh --version" >/dev/null 2>&1
-if [[ \$? -ne 0 ]]; then
+zsh --version > /dev/null
+if [ \$? -ne 0 ]; then
   sudo apt-get -y install zsh
 fi
 
