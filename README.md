@@ -4,16 +4,16 @@
 ```
 cat << EOF >> $HOME/.bashrc
 
-# install zsh if its not installed
+# install zsh if its not installed and changing the default shell
 zsh --version > /dev/null
 if [ \$? -ne 0 ]; then
   sudo apt-get -y install zsh
+  sudo chsh -s /bin/zsh \$USER
 fi
 
 # install ohmyzsh if its not installed and change default shell for user
 if [[ ! -d "\$HOME/.oh-my-zsh" ]]; then
   sh -c "\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-  sudo chsh -s /bin/zsh \$USER
 fi
 EOF
 ```
