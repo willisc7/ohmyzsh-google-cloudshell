@@ -4,12 +4,13 @@
 ```
 cat << EOF >> $HOME/.bashrc
 
-# install zsh if its not installed and changing the default shell
+# install zsh if its not installed
 zsh --version > /dev/null
 if [ \$? -ne 0 ]; then
   sudo apt-get -y install zsh
-  sudo chsh -s /bin/zsh \$USER
 fi
+
+sudo chsh -s /bin/zsh \$USER
 
 # install ohmyzsh if its not installed and change default shell for user
 if [[ ! -d "\$HOME/.oh-my-zsh" ]]; then
