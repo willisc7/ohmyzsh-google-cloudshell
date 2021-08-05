@@ -5,7 +5,8 @@
 touch $HOME/.customize_environment
 cat << EOF >> $HOME/.customize_environment
 # install zsh
-sudo apt-get -yq install zsh
+sudo apt-get update
+sudo apt-get -y install zsh
 EOF
 ```
 2. Install ohmyzsh and set default shell to zsh (for some reason this doesnt work properly if done in `.customize_environment` even when running ohmyzsh install using `--unattended`)
