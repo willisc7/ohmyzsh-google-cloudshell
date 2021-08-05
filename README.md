@@ -1,6 +1,6 @@
 # ohmyzsh-google-cloudshell
 
-1. When the initial shell opens in bash, the `.bashrc` file will install zsh and ohmyzsh and set the default shell to zsh going forward. This means `.bashrc` shouldn't be invoked again.
+1. Copy and paste the following block into your active cloudshell session
 ```
 cat << EOF >> $HOME/.bashrc
 
@@ -17,6 +17,6 @@ if [[ ! -d "\$HOME/.oh-my-zsh" ]]; then
 fi
 EOF
 ```
-2. Close the cloudshell instance and reopen it
+2. Close the cloudshell instance and reopen it. This will install zsh and ohmyzsh and change your default shell to zsh. Since zsh will now be the default, `.bashrc` shouldn't be invoked again.
 3. Run `gcloud config set project PROJECT_ID`
     * I tried getting around this by putting `DEVSHELL_PROJECT_ID=$(bash -c "echo $DEVSHELL_PROJECT_ID")` into `.zshenv` but that doesnt update automatically for some reason if you open another cloudshell under another project.
