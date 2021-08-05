@@ -3,10 +3,18 @@
 1. When the initial shell opens in bash, the `.bashrc` file will install zsh and ohmyzsh and set the default shell to zsh going forward. This means `.bashrc` shouldn't be invoked again.
 ```
 cat << EOF >> $HOME/.bashrc
-# install zsh and ohmyzsh and change default shell to zsh
-sudo apt-get -y install zsh
-sudo chsh -s /bin/zsh \$USER
-sh -c "\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# install zsh if its not installed
+command -v "zsh --version" >/dev/null 2>&1
+if [[ \$? -ne 0 ]]; then
+  sudo apt-get -y install zsh
+fi
+
+# install ohmyzsh if its not installed and change default shell for user
+if [[ ! -d "\$HOME/.oh-my-zsh" ]]; then
+  sh -c "\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  sudo chsh -s /bin/zsh \$USER
+fi
 EOF
 ```
 2. Close the cloudshell instance and reopen it
